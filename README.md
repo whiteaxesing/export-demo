@@ -37,3 +37,11 @@ Ejemplo2:
     "sector": "TECH",
     "status": "T"
 }
+
+
+Si se desea ingresar información directamente en la consola H2 en lugar de ejecutar la llamada en Postman, se puede utilziar el siguiente query
+
+INSERT INTO EXPORTER (identification, status, identification_type, name, version, acceptance, expiration, province, canton, district, email, sector)
+VALUES
+('12348576', 'T', 'A', 'Empresa de Prueba', 0, '2024-07-15', '2025-07-15', 1, 2, 3, 'empresa@example.com', 'TECH'),
+('12345678932', 'T', 'B', 'Empresa de Prueba2', 0, '2024-07-15', '2025-07-15', 1, 2, 3, 'empresa2@example2.com', 'TECH');
