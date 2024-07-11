@@ -1,0 +1,100 @@
+openapi: 3.0.0
+info:
+  title: Exporter API
+  version: 1.0.0
+paths:
+  /api/exporters:
+    get:
+      summary: Obtener todos los exportadores
+      responses:
+        '200':
+          description: Lista de exportadores
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Exporter'
+    post:
+      summary: Crear un nuevo exportador
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Exporter'
+      responses:
+        '201':
+          description: Exportador creado
+  /api/exporters/{id}:
+    get:
+      summary: Obtener exportador por ID
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: Exportador encontrado
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Exporter'
+  /api/exporters/{id}/activate:
+    put:
+      summary: Activar exportador
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: Exportador activado
+  /api/exporters/{id}/deactivate:
+    put:
+      summary: Desactivar exportador
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: Exportador desactivado
+components:
+  schemas:
+    Exporter:
+      type: object
+      properties:
+        id:
+          type: integer
+        status:
+          type: string
+        identificationType:
+          type: string
+        identification:
+          type: string
+        name:
+          type: string
+        version:
+          type: integer
+        acceptance:
+          type: string
+          format: date
+        expiration:
+          type: string
+          format: date
+        province:
+          type: integer
+        canton:
+          type: integer
+        district:
+          type: integer
+        email:
+          type: string
+        sector:
+          type: string
